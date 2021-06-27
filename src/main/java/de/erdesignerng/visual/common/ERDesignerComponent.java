@@ -42,6 +42,7 @@ import de.mogwai.common.i18n.ResourceHelperProvider;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -121,7 +122,9 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
     private DefaultAction viewAction;
 
     private DefaultCheckBox intelligentLayoutCheckbox;
-
+    
+    private JButton btnGuide = new JButton("Guide");
+    
     private DefaultMenu exportMenu;
 
     private DefaultAction exportOpenXavaAction;
@@ -779,6 +782,16 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
 
         theToolBar.addSeparator();
         theToolBar.add(intelligentLayoutCheckbox);
+        theToolBar.addSeparator();
+        theToolBar.add(btnGuide);
+
+        btnGuide.addActionListener((ActionListener) new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0){
+                GuideWindow gW = new GuideWindow();
+                gW.showWindow();
+            }
+        });
 
         worldConnector.initTitle();
 
